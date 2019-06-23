@@ -24,6 +24,7 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:onClick="doRecyclerview"
                 android:layout_margin="10dp"
                 android:text="recyclerview 相关" />
 
@@ -38,6 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="自定义view 相关" />
+
 
         </LinearLayout>
 
