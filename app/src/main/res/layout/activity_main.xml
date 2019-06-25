@@ -24,14 +24,15 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="doRecyclerview"
                 android:layout_margin="10dp"
+                android:onClick="doRecyclerview"
                 android:text="recyclerview 相关" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
+                android:onClick="doNet"
                 android:text="网络 相关" />
 
             <Button

@@ -20,6 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.RecyclerviewActivity" />
+        <activity android:name=".activity.NetActivity" />
     </application>
 
 </manifest>

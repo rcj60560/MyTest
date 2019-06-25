@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.blankj.utilcode.util.ActivityUtils;
+import com.luocj.mytest.activity.NetActivity;
 import com.luocj.mytest.activity.RecyclerviewActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -13,9 +14,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
     }
 
     public void doRecyclerview(View view) {
         ActivityUtils.startActivity(RecyclerviewActivity.class);
+    }
+
+    public void doNet(View view) {
+        ActivityUtils.startActivity(NetActivity.class);
     }
 }

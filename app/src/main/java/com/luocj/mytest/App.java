@@ -10,6 +10,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         OkGo.getInstance().init(this);
+
         Utils.init(this);
     }
 }
