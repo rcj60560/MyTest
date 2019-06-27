@@ -1,14 +1,21 @@
 package com.luocj.net.call;
 
 
-public interface StringCallback {
+import com.luocj.net.utils.StringConvert;
 
-    void onstart();
+import okhttp3.Response;
 
-    void onSuccess();
+public abstract class StringCallback extends AbsCallback<String> {
+    private StringConvert stringConvert;
 
-    void onFailure();
+    public StringCallback() {
+        stringConvert = new StringConvert();
+    }
 
-    void onFilish();
-
+    @Override
+    public String convertResponse(Response response) throws Throwable {
+        String s = stringConvert.convertResponse(response);
+        response.close();
+        return s;
+    }
 }

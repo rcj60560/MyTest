@@ -20,15 +20,16 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation "com.android.support:recyclerview-v7:28.0.0"
     //网络
     //必须使用
     implementation 'com.lzy.net:okgo:3.0.4'
     //工具类
     implementation 'com.blankj:utilcode:1.9.10'
     //上下拉刷新
-//    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5'
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5'
     //适配器
-//    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:VERSION_CODE'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
 
     implementation project(':net')
 }

@@ -5,16 +5,17 @@ import com.luocj.net.call.Call;
 import com.luocj.net.call.Callback;
 import com.luocj.net.model.HttpHeaders;
 import com.luocj.net.model.HttpParams;
+import com.luocj.net.response.Response;
 import com.luocj.net.utils.HttpUtils;
 
 import java.io.Serializable;
 
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
-import okhttp3.Response;
 
 public abstract class Request<T, R> implements Serializable {
     private static final long serialVersionUID = -7174118653689916252L;
+    private static final String TAG = Request.class.getSimpleName();
     protected String url;
     protected String baseUrl;
     protected transient OkHttpClient client;
@@ -52,6 +53,45 @@ public abstract class Request<T, R> implements Serializable {
     public void execute(Callback<T> callback) {
         HttpUtils.checkNotNull(callback, "callback == null");
         this.callback = callback;
+        if (call == null) {
+            call = new Call<T>() {
+                @Override
+                public Response<T> execute() throws Exception {
+
+                    return null;
+                }
+
+                @Override
+                public void execute(Callback<T> callback) {
+
+                }
+
+                @Override
+                public boolean isExecuted() {
+                    return false;
+                }
+
+                @Override
+                public void cancel() {
+
+                }
+
+                @Override
+                public boolean isCanceled() {
+                    return false;
+                }
+
+                @Override
+                public Call<T> clone() {
+                    return null;
+                }
+
+                @Override
+                public Request getRequest() {
+                    return null;
+                }
+            };
+        }
         call.execute(callback);
     }
 }

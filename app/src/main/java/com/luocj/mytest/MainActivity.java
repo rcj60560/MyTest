@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.blankj.utilcode.util.ActivityUtils;
-import com.luocj.mytest.activity.NetActivity;
-import com.luocj.mytest.activity.RecyclerviewActivity;
+import com.luocj.mytest.activity.net.NetActivity;
+import com.luocj.mytest.activity.recyclerview.RecyclerviewActivity;
 
 public class MainActivity extends AppCompatActivity {
 
