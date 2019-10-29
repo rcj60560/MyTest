@@ -4,53 +4,47 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="网络" />
-
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:onClick="doGet"
-        android:text="get请求" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:onClick="doDuanDian"
-        android:text="断点续传" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:onClick="doUpdate"
-        android:text="版本更新 demo"
+        android:onClick="doStartService"
+        android:text="start service"
         android:textAllCaps="false" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:onClick="doAsyncTask"
-        android:text="asyncTask "
+        android:onClick="doStop"
+        android:text="stop Service"
         android:textAllCaps="false" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:onClick="doGlide"
-        android:text="Glide "
+        android:onClick="doBindService"
+        android:text="bind service"
         android:textAllCaps="false" />
 
-    <ImageView
-        android:id="@+id/iv"
-        android:layout_width="wrap_content"
+    <Button
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp" />
+        android:layout_margin="10dp"
+        android:onClick="doUnBindService"
+        android:text="unbind service"
+        android:textAllCaps="false" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:onClick="doIntentService"
+        android:text="intentService"
+        android:textAllCaps="false" />
+
+
+
 
 </LinearLayout>

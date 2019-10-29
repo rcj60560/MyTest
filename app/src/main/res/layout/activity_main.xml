@@ -39,12 +39,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
+                android:onClick="doView"
                 android:text="自定义view 相关" />
 
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:onClick="doLazyLoad"
+                android:text="懒加载" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:onClick="doService"
+                android:text="service" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:onClick="doYouHua"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="优化先关" />
 
         </LinearLayout>
 
     </ScrollView>
-
 
 </LinearLayout>

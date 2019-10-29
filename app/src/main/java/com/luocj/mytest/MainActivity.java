@@ -5,8 +5,12 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.blankj.utilcode.util.ActivityUtils;
+import com.luocj.mytest.activity.bitmap.YouHuaActivity;
+import com.luocj.mytest.activity.customview.CustomViewActivity;
 import com.luocj.mytest.activity.net.NetActivity;
+import com.luocj.mytest.activity.other.LazyLoadActivity;
 import com.luocj.mytest.activity.recyclerview.RecyclerviewActivity;
+import com.luocj.mytest.activity.service.ServiceActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,7 +18,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
     }
 
     public void doRecyclerview(View view) {
@@ -23,5 +26,21 @@ public class MainActivity extends AppCompatActivity {
 
     public void doNet(View view) {
         ActivityUtils.startActivity(NetActivity.class);
+    }
+
+    public void doLazyLoad(View view) {
+        ActivityUtils.startActivity(LazyLoadActivity.class);
+    }
+
+    public void doService(View view) {
+        ActivityUtils.startActivity(ServiceActivity.class);
+    }
+
+    public void doView(View view) {
+        ActivityUtils.startActivity(CustomViewActivity.class);
+    }
+
+    public void doYouHua(View view) {
+        ActivityUtils.startActivity(YouHuaActivity.class);
     }
 }
