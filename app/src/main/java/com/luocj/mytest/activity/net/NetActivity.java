@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -158,5 +159,9 @@ public class NetActivity extends AppCompatActivity {
                 .into(iv);
 
 
+    }
+
+    public void doInstall(View view) {
+        ActivityUtils.startActivity(InstallActivity.class);
     }
 }

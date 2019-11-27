@@ -6,13 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.alibaba.fastjson.JSONObject;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.luocj.mytest.R;
@@ -41,7 +38,6 @@ public class ListBitmapActivity extends AppCompatActivity {
         rv.setLayoutManager(new LinearLayoutManager(this));
         adapter = new ListBitmapAdapter();
         rv.setAdapter(adapter);
-
     }
 
     private class ListBitmapAdapter extends BaseQuickAdapter<MeiZhiModel.ResultsBean, BaseViewHolder> {
@@ -57,7 +53,6 @@ public class ListBitmapActivity extends AppCompatActivity {
                     .load(item.getUrl())
                     .asBitmap()
                     .into(iv);
-
         }
     }
 

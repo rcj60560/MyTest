@@ -8,27 +8,52 @@ import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 
 import com.luocj.mytest.R;
+import com.yanzhenjie.permission.Action;
+import com.yanzhenjie.permission.AndPermission;
+import com.yanzhenjie.permission.runtime.Permission;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.List;
 
 public class InstallActivity extends AppCompatActivity {
 
-    private String folder = Environment.getExternalStorageDirectory() + File.separator + "aaaaaa" + File.separator;
-    private String fileName = "test.apk";
-    private File apkFile;
+    private static final String TAG = InstallActivity.class.getSimpleName();
+    private String fileName;
+    private String folder;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_install);
-
+        AndPermission.with(this)
+                .runtime()
+                .permission(Permission.Group.STORAGE)
+                .onGranted(new Action<List<String>>() {
+                    @Override
+                    public void onAction(List<String> data) {
+                        Log.i(TAG, "onAction: ");
+                        fileName = "test.apk";
+                    }
+                })
+                .onDenied(new Action<List<String>>() {
+                    @Override
+                    public void onAction(List<String> data) {
+                        Log.i(TAG, "onAction: ");
+                    }
+                })
+                .start();
     }
 
     public void install(View view) {
-        apkFile = new File(folder, fileName);
+        String fileName = Environment.getExternalStorageDirectory() + File.separator + "myapk";
+        File apkFile = new File(fileName, "app-release.apk");
+
         Intent intent = new Intent();
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.setAction(Intent.ACTION_VIEW);

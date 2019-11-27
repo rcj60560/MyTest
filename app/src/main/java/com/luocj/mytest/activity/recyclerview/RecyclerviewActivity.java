@@ -20,6 +20,8 @@ public class RecyclerviewActivity extends AppCompatActivity implements View.OnCl
     private void initView() {
         findViewById(R.id.btn1).setOnClickListener(this);
         findViewById(R.id.btn2).setOnClickListener(this);
+        findViewById(R.id.btn3).setOnClickListener(this);
+        findViewById(R.id.btn4).setOnClickListener(this);
     }
 
     @Override
@@ -32,6 +34,12 @@ public class RecyclerviewActivity extends AppCompatActivity implements View.OnCl
             case R.id.btn2:
                 startActivity(new Intent(this, EmptyViewActivity.class));
                 break;
+
+            case R.id.btn3:
+                startActivity(new Intent(this, SuspensionActivity.class));
+                break;
+
+
         }
     }
 }

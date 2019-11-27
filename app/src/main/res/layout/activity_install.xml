@@ -11,18 +11,4 @@
         android:onClick="install"
         android:text="一般安装" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:onClick="installN"
-        android:text="适配N 安装" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:onClick="installO"
-        android:text="适配O 安装" />
-
 </LinearLayout>

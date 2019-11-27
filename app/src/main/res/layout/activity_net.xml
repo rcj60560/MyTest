@@ -47,6 +47,13 @@
         android:text="Glide "
         android:textAllCaps="false" />
 
+    <Button
+        android:layout_margin="10dp"
+        android:text="app升级安装"
+        android:onClick="doInstall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
     <ImageView
         android:id="@+id/iv"
         android:layout_width="wrap_content"

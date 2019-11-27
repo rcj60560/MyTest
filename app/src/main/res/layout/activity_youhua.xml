@@ -19,4 +19,20 @@
         android:text="listview 加载bitmap"
         android:textAllCaps="false" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:onClick="btn3"
+        android:text="Bitmap 压缩优化"
+        android:textAllCaps="false" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:onClick="btn4"
+        android:text="三方压缩工具" />
+
+
 </LinearLayout>

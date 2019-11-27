@@ -5,8 +5,14 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.View;
+import android.widget.RelativeLayout;
 
 import com.luocj.mytest.R;
+
+/**
+ * 事件分发
+ */
 
 public class FFActivity extends AppCompatActivity {
     private static final String TAG = FFActivity.class.getSimpleName();

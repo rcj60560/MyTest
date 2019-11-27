@@ -6,14 +6,21 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.luocj.mytest.R;
 
-public class BitmapYouHuaActivity extends AppCompatActivity implements View.OnClickListener {
+import java.io.ByteArrayOutputStream;
+
+public class BitmapYouHuaActivity extends
+        AppCompatActivity implements View.OnClickListener {
+    private static final String TAG = BitmapYouHuaActivity.class.getSimpleName();
     private ImageView iv1;
     private ImageView iv2;
+    private TextView tvBtm;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -26,8 +33,13 @@ public class BitmapYouHuaActivity extends AppCompatActivity implements View.OnCl
         iv1 = findViewById(R.id.iv1);
         iv2 = findViewById(R.id.iv2);
 
+        findViewById(R.id.btn_get_info).setOnClickListener(this);
+        tvBtm = findViewById(R.id.tv_btm);
+
+
         findViewById(R.id.btn1).setOnClickListener(this);
         findViewById(R.id.btn2).setOnClickListener(this);
+        findViewById(R.id.btn3).setOnClickListener(this);
 
     }
 
@@ -37,9 +49,32 @@ public class BitmapYouHuaActivity extends AppCompatActivity implements View.OnCl
         switch (id) {
             case R.id.btn1:
                 iv1.setImageBitmap(decodeSampledBitmapFromResource(getResources(), R.mipmap.pic, 200, 200));
+//                Bitmap bm = BitmapFactory.decodeResource(getResources(), R.mipmap.pic);
+//                int byteCount = bm.getByteCount();
+//                iv1.setImageBitmap(bm);
                 break;
+
             case R.id.btn2:
                 iv2.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.mipmap.pic));
+                break;
+
+            case R.id.btn_get_info:
+                Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.pic);
+                int byteCount1 = bitmap.getByteCount();
+                int width = bitmap.getWidth();
+                int height = bitmap.getHeight();
+                tvBtm.setText("大小:" + byteCount1 + ",width : " + width + ",height:" + height);
+                break;
+            //质量压缩
+            case R.id.btn3:
+                Bitmap btp3 = BitmapFactory.decodeResource(getResources(), R.mipmap.pic);
+                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                btp3.compress(Bitmap.CompressFormat.JPEG, 20, bos);
+
+                byte[] bytes = bos.toByteArray();
+                Bitmap resultBitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+
+                iv1.setImageBitmap(resultBitmap);
                 break;
         }
     }
@@ -60,6 +95,7 @@ public class BitmapYouHuaActivity extends AppCompatActivity implements View.OnCl
             // 一定都会大于等于目标的宽和高。
             inSampleSize = heightRatio < widthRatio ? heightRatio : widthRatio;
         }
+        Log.i(TAG, "calculateInSampleSize: " + inSampleSize);
         return inSampleSize;
     }
 
@@ -71,11 +107,12 @@ public class BitmapYouHuaActivity extends AppCompatActivity implements View.OnCl
         // 第一次解析将inJustDecodeBounds设置为true，来获取图片大小
         final BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
-        BitmapFactory.decodeResource(res, resId, options);
+        Bitmap bitmap = BitmapFactory.decodeResource(res, resId, options);
         // 调用上面定义的方法计算inSampleSize值
         options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
         // 使用获取到的inSampleSize值再次解析图片
         options.inJustDecodeBounds = false;
-        return BitmapFactory.decodeResource(res, resId, options);
+        Bitmap bitmap1 = BitmapFactory.decodeResource(res, resId, options);
+        return bitmap1;
     }
 }

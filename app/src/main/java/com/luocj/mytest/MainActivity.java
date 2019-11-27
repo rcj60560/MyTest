@@ -9,6 +9,7 @@ import com.luocj.mytest.activity.bitmap.YouHuaActivity;
 import com.luocj.mytest.activity.customview.CustomViewActivity;
 import com.luocj.mytest.activity.net.NetActivity;
 import com.luocj.mytest.activity.other.LazyLoadActivity;
+import com.luocj.mytest.activity.project.ProjectActivity;
 import com.luocj.mytest.activity.recyclerview.RecyclerviewActivity;
 import com.luocj.mytest.activity.service.ServiceActivity;
 
@@ -42,5 +43,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void doYouHua(View view) {
         ActivityUtils.startActivity(YouHuaActivity.class);
+    }
+
+    public void doProject(View view) {
+        ActivityUtils.startActivity(ProjectActivity.class);
     }
 }

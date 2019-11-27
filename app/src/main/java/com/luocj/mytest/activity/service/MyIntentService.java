@@ -15,7 +15,6 @@ public class MyIntentService extends IntentService {
     private int count;
 
 
-
     public MyIntentService(String name) {
         super("myIntentService -------------------->>>>>>");
     }

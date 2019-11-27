@@ -63,6 +63,13 @@
                 android:layout_margin="10dp"
                 android:text="优化先关" />
 
+            <Button
+                android:layout_margin="10dp"
+                android:text="项目相关"
+                android:onClick="doProject"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
         </LinearLayout>
 
     </ScrollView>
