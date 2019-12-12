@@ -51,6 +51,7 @@
         <activity android:name=".activity.project.ProjectActivity" />
         <activity android:name=".activity.bitmap.BitmapCompressActivity" />
         <activity android:name=".activity.bitmap.ThirdCompressActivity" />
+        <activity android:name=".activity.webview.WebViewActivity" />
 
         <service android:name=".activity.service.SimpleService" />
         <service android:name=".activity.service.BindService" />

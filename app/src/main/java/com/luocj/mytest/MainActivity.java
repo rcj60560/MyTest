@@ -2,6 +2,7 @@ package com.luocj.mytest;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.blankj.utilcode.util.ActivityUtils;
@@ -12,13 +13,38 @@ import com.luocj.mytest.activity.other.LazyLoadActivity;
 import com.luocj.mytest.activity.project.ProjectActivity;
 import com.luocj.mytest.activity.recyclerview.RecyclerviewActivity;
 import com.luocj.mytest.activity.service.ServiceActivity;
+import com.luocj.mytest.activity.webview.WebViewActivity;
+import com.yanzhenjie.permission.Action;
+import com.yanzhenjie.permission.AndPermission;
+import com.yanzhenjie.permission.runtime.Permission;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = MainActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        AndPermission.with(this)
+                .runtime()
+                .permission(Permission.Group.STORAGE)
+                .onDenied(new Action<List<String>>() {
+                    @Override
+                    public void onAction(List<String> data) {
+                        Log.i(TAG, "onAction: " + "denied");
+
+                    }
+                })
+                .onGranted(new Action<List<String>>() {
+                    @Override
+                    public void onAction(List<String> data) {
+                        Log.i(TAG, "onAction: " + " granted ");
+                    }
+                })
+                .start();
     }
 
     public void doRecyclerview(View view) {
@@ -47,5 +73,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void doProject(View view) {
         ActivityUtils.startActivity(ProjectActivity.class);
+    }
+
+    public void doWebView(View view) {
+        ActivityUtils.startActivity(WebViewActivity.class);
     }
 }
