@@ -35,6 +35,8 @@ public class BitmapYouHuaActivity5 extends AppCompatActivity implements View.OnC
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bitmap5);
+
+        //test git
         imageview1 = findViewById(R.id.iv1);
         imageview2 = findViewById(R.id.iv2);
 
