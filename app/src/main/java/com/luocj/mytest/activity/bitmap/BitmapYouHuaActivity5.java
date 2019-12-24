@@ -37,6 +37,8 @@ public class BitmapYouHuaActivity5 extends AppCompatActivity implements View.OnC
         setContentView(R.layout.activity_bitmap5);
 
         //test git
+        //test new
+        //test
         imageview1 = findViewById(R.id.iv1);
         imageview2 = findViewById(R.id.iv2);
 
