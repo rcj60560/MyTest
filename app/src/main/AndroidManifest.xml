@@ -52,6 +52,7 @@
         <activity android:name=".activity.bitmap.BitmapCompressActivity" />
         <activity android:name=".activity.bitmap.ThirdCompressActivity" />
         <activity android:name=".activity.webview.WebViewActivity" />
+        <activity android:name=".activity.bitmap.BitmapYouHuaActivity5" />
 
         <service android:name=".activity.service.SimpleService" />
         <service android:name=".activity.service.BindService" />

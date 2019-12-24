@@ -36,4 +36,8 @@ public class YouHuaActivity extends AppCompatActivity implements View.OnClickLis
     public void btn4(View view) {
         ActivityUtils.startActivity(ThirdCompressActivity.class);
     }
+
+    public void btn5(View view) {
+        ActivityUtils.startActivity(BitmapYouHuaActivity5.class);
+    }
 }
