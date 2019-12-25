@@ -57,6 +57,7 @@
         <service android:name=".activity.service.SimpleService" />
         <service android:name=".activity.service.BindService" />
         <service android:name=".activity.service.MyIntentService" />
+        <service android:name=".activity.service.BindStartService" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"

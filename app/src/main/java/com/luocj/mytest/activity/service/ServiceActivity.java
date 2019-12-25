@@ -25,14 +25,22 @@ public class ServiceActivity extends AppCompatActivity {
     public static final String ACTION_SIMPLESERVICE = "SIMPLE_SERVICE";
     public static final String ACTION_BIND_SERVICE = "ACTION_BIND_SERVICE";
     private ServiceConnection connection = new ServiceConnection() {
+        private String stringInfo;
         private BindService.MyBinder myBinder;
+        private BindStartService.MyIBinder iBinder;
 
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-            myBinder = (BindService.MyBinder) service;
-            String stringInfo = myBinder.getStringInfo();
-            tvResult.append("onServiceConnected" + stringInfo + "\n");
-            Log.i(TAG, "onServiceConnected: " + stringInfo);
+//            myBinder = (BindService.MyBinder) service;
+            if (service instanceof BindService.MyBinder) {
+                myBinder = (BindService.MyBinder)service;
+                stringInfo = myBinder.getStringInfo();
+                tvResult.append("onServiceConnected" + stringInfo + "\n");
+            } else if (service instanceof BindStartService.MyIBinder) {
+                iBinder = (BindStartService.MyIBinder)service;
+                Log.i(TAG, "onServiceConnected: ");
+            }
+            Log.i(TAG, "onServiceConnected: " + stringInfo + ",serviceActivity:ThreadName:" + Thread.currentThread().getName() + ",ID:" + Thread.currentThread().getId() + ",name:" + name.getClassName());
         }
 
         @Override
@@ -93,6 +101,32 @@ public class ServiceActivity extends AppCompatActivity {
     public void doIntentService(View view) {
         Intent intent = new Intent(ServiceActivity.this, MyIntentService.class);
         stopService(intent);
+    }
+
+    /**
+     * 混合模式
+     * 先start service
+     * 在bind service
+     *
+     * @param view
+     */
+    public void startService(View view) {
+        Intent intent = new Intent(this, BindStartService.class);
+        startService(intent);
+    }
+
+    public void bindService(View view) {
+        Intent intent = new Intent(this, BindStartService.class);
+        bindService(intent, connection, Context.BIND_AUTO_CREATE);
+    }
+
+    public void stopService(View view) {
+        Intent intent = new Intent(this, BindStartService.class);
+        stopService(intent);
+    }
+
+    public void unBindService(View view) {
+        unbindService(connection);
     }
 
     private class MyBroadcastReceive extends BroadcastReceiver {
