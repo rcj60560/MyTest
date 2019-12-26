@@ -27,18 +27,20 @@ public class BindStartService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
+        Log.i(TAG, "onCreate: ");
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
     }
 
     @Override
     public void onStart(Intent intent, int startId) {
+        Log.i(TAG, "onStart: ");
         super.onStart(intent, startId);
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        Log.i(TAG, "onStartCommand: ");
         return super.onStartCommand(intent, flags, startId);
-
     }
 
     @Nullable

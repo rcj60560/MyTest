@@ -52,9 +52,9 @@
 
         <Button
             android:layout_width="0dp"
-            android:onClick="bindService"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="bindService"
             android:text="bindService"
             android:textAllCaps="false" />
 
@@ -69,8 +69,8 @@
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:onClick="stopService"
             android:layout_weight="1"
+            android:onClick="stopService"
             android:text="stopService"
             android:textAllCaps="false" />
 
@@ -82,8 +82,14 @@
             android:text="unBindService"
             android:textAllCaps="false" />
 
-
     </LinearLayout>
+
+    <Button
+        android:onClick="forgroundService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="前台服务" />
 
     <Button
         android:layout_width="match_parent"

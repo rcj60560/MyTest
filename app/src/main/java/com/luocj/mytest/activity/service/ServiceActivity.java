@@ -33,12 +33,13 @@ public class ServiceActivity extends AppCompatActivity {
         public void onServiceConnected(ComponentName name, IBinder service) {
 //            myBinder = (BindService.MyBinder) service;
             if (service instanceof BindService.MyBinder) {
-                myBinder = (BindService.MyBinder)service;
+                myBinder = (BindService.MyBinder) service;
                 stringInfo = myBinder.getStringInfo();
                 tvResult.append("onServiceConnected" + stringInfo + "\n");
             } else if (service instanceof BindStartService.MyIBinder) {
-                iBinder = (BindStartService.MyIBinder)service;
-                Log.i(TAG, "onServiceConnected: ");
+                iBinder = (BindStartService.MyIBinder) service;
+                String showInfo = iBinder.showInfo();
+                Log.i(TAG, "onServiceConnected: " + showInfo);
             }
             Log.i(TAG, "onServiceConnected: " + stringInfo + ",serviceActivity:ThreadName:" + Thread.currentThread().getName() + ",ID:" + Thread.currentThread().getId() + ",name:" + name.getClassName());
         }
@@ -127,6 +128,15 @@ public class ServiceActivity extends AppCompatActivity {
 
     public void unBindService(View view) {
         unbindService(connection);
+    }
+
+    /**
+     * 前台服务
+     *
+     * @param view
+     */
+    public void forgroundService(View view) {
+        startService(new Intent(this, ForgroundService.class));
     }
 
     private class MyBroadcastReceive extends BroadcastReceiver {
