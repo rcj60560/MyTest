@@ -24,6 +24,7 @@ public class NotificationUtils extends ContextWrapper {
         super(base);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             //android 8.0以上需要特殊处理，也就是targetSDKVersion为26以上
+            //
             createNotificationChannel();
         }
     }
