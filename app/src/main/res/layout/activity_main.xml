@@ -109,9 +109,12 @@
 
                 <Button
                     android:layout_width="0dp"
+                    android:onClick="asynctaskActivity"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:text="asynctask"
+                    android:textAllCaps="false" />
 
             </LinearLayout>
 

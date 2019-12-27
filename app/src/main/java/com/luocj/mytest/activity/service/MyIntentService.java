@@ -13,9 +13,9 @@ public class MyIntentService extends IntentService {
     private LocalBroadcastManager instance;
     private boolean isRunning;
     private int count;
+    private int id = -1;
 
-
-    public MyIntentService(String name) {
+    public MyIntentService() {
         super("myIntentService -------------------->>>>>>");
     }
 
@@ -23,16 +23,16 @@ public class MyIntentService extends IntentService {
     protected void onHandleIntent(Intent intent) {
         Log.i(TAG, "onHandleIntent: ");
         try {
-            Thread.sleep(1000);
+//            Thread.sleep(1000);
             isRunning = true;
             count = 0;
             while (isRunning) {
                 count++;
-                if (count >= 100) {
+                if (count >= 5) {
                     isRunning = false;
                 }
-                Thread.sleep(50);
-                sendThreadStatus("线程运行中...", count);
+                Thread.sleep(1000);
+                sendThreadStatus("线程运行中..." + ",id:" + id, count);
             }
 
         } catch (InterruptedException e) {
@@ -52,7 +52,6 @@ public class MyIntentService extends IntentService {
         super.onCreate();
         Log.i(TAG, "onCreate: ");
         instance = LocalBroadcastManager.getInstance(this);
-
     }
 
     @Override
@@ -63,7 +62,8 @@ public class MyIntentService extends IntentService {
 
     @Override
     public int onStartCommand(@Nullable Intent intent, int flags, int startId) {
-        Log.i(TAG, "onStartCommand: ");
+        Log.i(TAG, "onStartCommand: " + startId);
+        id = intent.getIntExtra("id", -1);
         return super.onStartCommand(intent, flags, startId);
     }
 

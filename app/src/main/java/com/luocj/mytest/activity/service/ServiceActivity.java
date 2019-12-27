@@ -55,6 +55,8 @@ public class ServiceActivity extends AppCompatActivity {
     private MyBroadcastReceive myBroadcastReceive;
     private TextView tvResult;
 
+    private int id = 0;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,8 +102,10 @@ public class ServiceActivity extends AppCompatActivity {
     }
 
     public void doIntentService(View view) {
+        id++;
         Intent intent = new Intent(ServiceActivity.this, MyIntentService.class);
-        stopService(intent);
+        intent.putExtra("id", id);
+        startService(intent);
     }
 
     /**

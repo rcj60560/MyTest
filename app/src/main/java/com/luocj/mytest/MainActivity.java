@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.blankj.utilcode.util.ActivityUtils;
+import com.luocj.mytest.activity.asynctask.AsyncTaskActivity;
 import com.luocj.mytest.activity.bitmap.YouHuaActivity;
 import com.luocj.mytest.activity.customview.CustomViewActivity;
 import com.luocj.mytest.activity.net.NetActivity;
@@ -77,5 +78,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void doWebView(View view) {
         ActivityUtils.startActivity(WebViewActivity.class);
+    }
+
+    public void asynctaskActivity(View view) {
+        ActivityUtils.startActivity(AsyncTaskActivity.class);
     }
 }
