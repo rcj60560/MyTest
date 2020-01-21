@@ -35,6 +35,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:onClick="doUpdate1"
+        android:text="检查版本更新"
+        android:textAllCaps="false" />
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:onClick="doAsyncTask"
         android:text="asyncTask "
         android:textAllCaps="false" />

@@ -32,7 +32,7 @@ public class SimpleService extends Service {
                     } else {
                         Log.i(TAG, "handleMessage: " + " 时间到 ");
                         sendIntentInfo("handleMessage: " + " 时间到 ");
-                        count= 0;
+                        count = 0;
                     }
                     break;
             }
