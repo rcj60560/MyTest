@@ -19,6 +19,7 @@ import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.demo.updatelib.update.UpdateService;
 import com.luocj.mytest.R;
 import com.luocj.mytest.utils.IOUtils;
 import com.luocj.mytest.utils.NotificationHelper;
@@ -163,5 +164,9 @@ public class NetActivity extends AppCompatActivity {
 
     public void doInstall(View view) {
         ActivityUtils.startActivity(InstallActivity.class);
+    }
+
+    public void doUpdate1(View view) {
+        UpdateService.startService(NetActivity.this);
     }
 }

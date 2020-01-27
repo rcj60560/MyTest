@@ -1,1 +1,1 @@
-include ':app', ':net', ':takephoto_library'
+include ':app', ':net', ':takephoto_library', ':updatelib'
