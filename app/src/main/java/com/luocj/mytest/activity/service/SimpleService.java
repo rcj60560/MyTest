@@ -27,11 +27,12 @@ public class SimpleService extends Service {
                         Message mes = Message.obtain();
                         mes.what = 1;
                         handler.sendMessageDelayed(mes, 2000);
-                        Log.i(TAG, "handleMessage:----------> " + count);
+                        Log.i(TAG, "handleMessage:----------> " + count +",当前线程为：" +Thread.currentThread().getName() +",ThreadId:"+ Thread.currentThread().getId());
                         sendIntentInfo("handleMessage:----------> \" + count:" + count);
                     } else {
                         Log.i(TAG, "handleMessage: " + " 时间到 ");
                         sendIntentInfo("handleMessage: " + " 时间到 ");
+                        stopSelf();
                         count = 0;
                     }
                     break;

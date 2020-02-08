@@ -148,6 +148,7 @@ public class NetActivity extends AppCompatActivity {
     public void doAsyncTask(View view) {
         MyAsyncTask myAsyncTask = new MyAsyncTask(this);
         myAsyncTask.execute(null, null, null);
+//        myAsyncTask.executeOnExecutor(null, null, null,null);
     }
 
     public void doGlide(View view) {

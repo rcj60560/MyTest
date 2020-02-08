@@ -34,13 +34,7 @@ public class MainActivity extends AppCompatActivity {
         AndPermission.with(this)
                 .runtime()
                 .permission(Permission.Group.STORAGE)
-                .onDenied(new Action<List<String>>() {
-                    @Override
-                    public void onAction(List<String> data) {
-                        Log.i(TAG, "onAction: " + "denied");
-
-                    }
-                })
+                .onDenied(data -> Log.i(TAG, "onAction: " + "denied"))
                 .onGranted(new Action<List<String>>() {
                     @Override
                     public void onAction(List<String> data) {

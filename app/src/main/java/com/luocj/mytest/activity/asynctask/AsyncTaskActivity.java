@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.luocj.mytest.R;
+import com.luocj.mytest.widget.MyAsyncTask;
 
 public class AsyncTaskActivity extends AppCompatActivity {
     @Override
