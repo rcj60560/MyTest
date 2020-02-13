@@ -40,4 +40,7 @@ public class YouHuaActivity extends AppCompatActivity implements View.OnClickLis
     public void btn5(View view) {
         ActivityUtils.startActivity(BitmapYouHuaActivity5.class);
     }
+
+    public void btn6(View view) {ActivityUtils.startActivity(XingNengYouHuaActivity.class);
+    }
 }

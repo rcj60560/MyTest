@@ -42,4 +42,11 @@
         android:onClick="btn5"
         android:text="bitmap 压缩测试1" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:onClick="btn6"
+        android:text="性能优化" />
+
 </LinearLayout>

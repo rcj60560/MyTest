@@ -54,6 +54,8 @@
         <activity android:name=".activity.webview.WebViewActivity" />
         <activity android:name=".activity.bitmap.BitmapYouHuaActivity5" />
         <activity android:name=".activity.asynctask.AsyncTaskActivity" />
+        <activity android:name=".activity.bitmap.XingNengYouHuaActivity" />
+        <activity android:name=".activity.bitmap.TestActivity" />
 
         <service android:name=".activity.service.SimpleService" />
         <service android:name=".activity.service.BindService" />

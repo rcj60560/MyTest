@@ -1,0 +1,53 @@
+package com.luocj.mytest.utils;
+
+import android.graphics.Bitmap;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+import android.util.ArrayMap;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.lang.ref.ReferenceQueue;
+import java.lang.ref.SoftReference;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class BitmapCache {
+
+    private final ReferenceQueue<Bitmap> queue;
+    private final ArrayMap<String, MySoftRef> hasRefs;
+    private static BitmapCache cache;
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    private BitmapCache() {
+        hasRefs = new ArrayMap<String, MySoftRef>();
+        queue = new ReferenceQueue<>();
+        Thread thread = new Thread();
+        try {
+            RandomAccessFile raf = new RandomAccessFile("name", "rwd");
+            raf.setLength(1L);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {o
+            e.printStackTrace();
+        }
+    }
+
+
+    private class MySoftRef extends SoftReference<Bitmap> {
+        public MySoftRef(Bitmap referent, ReferenceQueue<? super Bitmap> q) {
+            super(referent, q);
+
+        }
+    }
+
+    public static BitmapCache getInstance() {
+        if (cache == null) {
+            cache = new BitmapCache();
+        }
+        return cache;
+    }
+}

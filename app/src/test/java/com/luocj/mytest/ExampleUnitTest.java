@@ -1,6 +1,7 @@
 package com.luocj.mytest;
 
 import android.graphics.Bitmap;
+import android.os.Handler;
 import android.util.LruCache;
 
 import org.junit.Test;
@@ -60,6 +61,8 @@ public class ExampleUnitTest {
             System.out.println(entry.getKey() + ":" + entry.getValue());
 
         }
+
+        Handler handler = new Handler();
 
     }
 }
