@@ -5,7 +5,9 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 
-public class MyView extends android.support.v7.widget.AppCompatButton {
+import androidx.appcompat.widget.AppCompatButton;
+
+public class MyView extends AppCompatButton {
     private static final String TAG = MyView.class.getSimpleName();
 
     public MyView(Context context) {

@@ -2,9 +2,6 @@ package com.luocj.mytest.activity.project;
 
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -19,6 +16,10 @@ import com.yanzhenjie.album.AlbumLoader;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.runtime.Permission;
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class ProjectActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_CHOOSE = 0x01;

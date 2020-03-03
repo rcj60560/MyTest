@@ -5,11 +5,6 @@ import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -20,21 +15,48 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.demo.updatelib.update.UpdateService;
 import com.luocj.mytest.R;
+import com.luocj.mytest.model.ArticleModel;
 import com.luocj.mytest.utils.NotificationHelper;
 import com.luocj.mytest.widget.MyAsyncTask;
 import com.luocj.net.Net;
 import com.luocj.net.call.StringCallback;
-import com.luocj.net.response.Response;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.FileCallback;
 import com.lzy.okgo.model.Progress;
 import com.lzy.okgo.request.base.Request;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Interceptor;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NetActivity extends AppCompatActivity {
     private static final String TAG = NetActivity.class.getSimpleName();
     private static final int CODE = 0x01;
+    public static final String API_URL = "https://wanandroid.com";
 
     String apkurl = "http://60.28.125.129/f1.market.xiaomi.com/download/AppStore/0ff41344f280f40c83a1bbf7f14279fb6542ebd2a/com.sina.weibo.apk";
     private ImageView iv;
@@ -56,13 +78,34 @@ public class NetActivity extends AppCompatActivity {
     }
 
     public void doGet(View view) {
-        Net.<String>get("http://www.baidu.com")
-                .execute(new StringCallback() {
-                    @Override
-                    public void onSuccess(Response<String> response) {
-                        Log.i(TAG, "onSuccess: " + response);
-                    }
-                });
+//        Net.<String>get("http://www.baidu.com")
+//                .execute(new StringCallback() {
+//                    @Override
+//                    public void onSuccess(Response<String> response) {
+//                        Log.i(TAG, "onSuccess: " + response);
+//                    }
+//                });
+
+        ExecutorService executorService = Executors.newCachedThreadPool();
+
+        OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
+        okhttp3.Request request = new okhttp3.Request.Builder()
+                .get()
+                .url("http://www.baidu.com")
+                .build();
+
+        Call call = okHttpClient.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.i(TAG, "onFailure: ");
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.i(TAG, "onResponse: ");
+            }
+        });
     }
 
     public void doDuanDian(View view) {
@@ -167,5 +210,93 @@ public class NetActivity extends AppCompatActivity {
 
     public void doUpdate1(View view) {
         UpdateService.startService(NetActivity.this);
+    }
+
+    public void doRetrofit(View view) {
+
+        OkHttpClient okHttpClient = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
+            @Override
+            public Response intercept(Chain chain) throws IOException {
+                okhttp3.Request request = chain.request();
+                Log.d(TAG, "intercept: " + request.toString());
+                //打印服务端响应数据
+                Response response = chain.proceed(request);
+                String content = response.body().string();
+                MediaType mediaType = response.body().contentType();
+                Log.d(TAG, "intercept: response" + content);
+                Log.d(TAG, "intercept: mediaType" + mediaType.toString());
+
+                return response
+                        .newBuilder()
+                        .body(ResponseBody.create(mediaType, content))
+                        .build();
+            }
+        }).build();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(API_URL)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(okHttpClient)
+                .build();
+
+        API api = retrofit.create(API.class);
+
+//        retrofit2.Call<ArticleModel> call = api.getWXarticle();
+//        call.enqueue(new retrofit2.Callback<ArticleModel>() {
+//            @Override
+//            public void onResponse(retrofit2.Call<ArticleModel> call, retrofit2.Response<ArticleModel> response) {
+//                Log.d(TAG, "onResponse: ");
+//            }
+//
+//            @Override
+//            public void onFailure(retrofit2.Call<ArticleModel> call, Throwable t) {
+//                Log.d(TAG, "onFailure: ");
+//            }
+//        });
+
+        Observable<ArticleModel> observable = api.getWXarticleOb();
+        observable.subscribeOn(Schedulers.io())
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ArticleModel>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        Log.d(TAG, "onSubscribe: " + Thread.currentThread().getName());
+                    }
+
+                    @Override
+                    public void onNext(ArticleModel articleModel) {
+                        Log.d(TAG, "onNext: " + Thread.currentThread().getName());
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d(TAG, "onError: " + Thread.currentThread().getName());
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        Log.d(TAG, "onComplete: " + Thread.currentThread().getName());
+                    }
+                });
+
+//        Observable<ArticleModel> observable = api.getWXarticleOb();
+//        observable.subscribeOn(Schedulers.io())
+//                .subscribe(new Observer<ArticleModel>() {
+//                    @Override
+//                    public void onCompleted() {
+//                        Log.d(TAG, "onCompleted: " + Thread.currentThread().getName());
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        Log.d(TAG, "onError: " + Thread.currentThread().getName());
+//                    }
+//
+//                    @Override
+//                    public void onNext(ArticleModel articleModel) {
+//                        Log.d(TAG, "onNext: " + Thread.currentThread().getName());
+//                    }
+//                });
     }
 }

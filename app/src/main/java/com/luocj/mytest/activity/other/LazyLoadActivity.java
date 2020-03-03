@@ -2,16 +2,8 @@ package com.luocj.mytest.activity.other;
 
 import android.app.LauncherActivity;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.View;
 
+import com.google.android.material.tabs.TabLayout;
 import com.luocj.mytest.R;
 import com.luocj.mytest.fragment.FragmentA;
 import com.luocj.mytest.fragment.FragmentB;
@@ -19,6 +11,13 @@ import com.luocj.mytest.fragment.FragmentC;
 import com.luocj.mytest.fragment.FragmentD;
 
 import java.util.ArrayList;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 public class LazyLoadActivity extends AppCompatActivity {
 

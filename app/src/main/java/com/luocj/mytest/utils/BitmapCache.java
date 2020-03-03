@@ -2,7 +2,6 @@ package com.luocj.mytest.utils;
 
 import android.graphics.Bitmap;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.util.ArrayMap;
 
 import java.io.FileNotFoundException;
@@ -13,6 +12,8 @@ import java.lang.ref.SoftReference;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import androidx.annotation.RequiresApi;
 
 public class BitmapCache {
 
@@ -31,7 +32,7 @@ public class BitmapCache {
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-        } catch (IOException e) {o
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

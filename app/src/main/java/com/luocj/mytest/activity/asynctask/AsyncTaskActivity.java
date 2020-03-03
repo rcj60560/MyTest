@@ -1,12 +1,13 @@
 package com.luocj.mytest.activity.asynctask;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.luocj.mytest.R;
 import com.luocj.mytest.widget.MyAsyncTask;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class AsyncTaskActivity extends AppCompatActivity {
     @Override

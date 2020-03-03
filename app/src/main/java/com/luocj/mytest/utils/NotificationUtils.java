@@ -10,9 +10,10 @@ import android.content.ContextWrapper;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
-import android.support.v4.app.NotificationCompat;
 import android.widget.RemoteViews;
+
+import androidx.annotation.RequiresApi;
+import androidx.core.app.NotificationCompat;
 
 public class NotificationUtils extends ContextWrapper {
     public static final String CHANNEL_ID = "default";

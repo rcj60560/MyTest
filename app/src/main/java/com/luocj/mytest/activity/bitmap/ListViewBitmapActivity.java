@@ -1,10 +1,11 @@
 package com.luocj.mytest.activity.bitmap;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 
 import com.luocj.mytest.R;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class ListViewBitmapActivity extends AppCompatActivity {
     @Override

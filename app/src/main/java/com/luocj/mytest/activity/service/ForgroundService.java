@@ -9,13 +9,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.IBinder;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.util.Log;
 
 import com.luocj.mytest.App;
 import com.luocj.mytest.R;
 import com.luocj.mytest.utils.NotificationUtils;
+
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
 public class ForgroundService extends Service {

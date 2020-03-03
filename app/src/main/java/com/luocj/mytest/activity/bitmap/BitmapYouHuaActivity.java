@@ -4,8 +4,6 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -14,6 +12,9 @@ import android.widget.TextView;
 import com.luocj.mytest.R;
 
 import java.io.ByteArrayOutputStream;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class BitmapYouHuaActivity extends
         AppCompatActivity implements View.OnClickListener {

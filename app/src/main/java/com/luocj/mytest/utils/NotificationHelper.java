@@ -7,13 +7,14 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-import android.support.v4.app.NotificationCompat;
 
 import com.luocj.mytest.MainActivity;
 import com.luocj.mytest.R;
 import com.luocj.mytest.activity.net.InstallActivity;
 
 import java.util.zip.Inflater;
+
+import androidx.core.app.NotificationCompat;
 
 public class NotificationHelper {
 
