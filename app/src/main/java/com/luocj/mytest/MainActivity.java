@@ -1,5 +1,6 @@
 package com.luocj.mytest;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +13,7 @@ import com.luocj.mytest.activity.net.NetActivity;
 import com.luocj.mytest.activity.other.LazyLoadActivity;
 import com.luocj.mytest.activity.project.ProjectActivity;
 import com.luocj.mytest.activity.recyclerview.RecyclerviewActivity;
+import com.luocj.mytest.activity.saveapp.SaveAppActivity;
 import com.luocj.mytest.activity.service.ServiceActivity;
 import com.luocj.mytest.activity.webview.WebViewActivity;
 import com.yanzhenjie.permission.Action;
@@ -79,5 +81,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void asynctaskActivity(View view) {
         ActivityUtils.startActivity(AsyncTaskActivity.class);
+    }
+
+    //进程保活
+    public void doSaveApp(View view) {
+        ActivityUtils.startActivity(SaveAppActivity.class);
     }
 }

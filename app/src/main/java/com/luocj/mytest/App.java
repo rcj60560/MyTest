@@ -17,5 +17,6 @@ public class App extends Application {
         Utils.init(this);
 
         MultiDex.install(this);
+
     }
 }
