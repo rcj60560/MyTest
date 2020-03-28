@@ -27,7 +27,6 @@ import com.lzy.okgo.request.base.Request;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -36,6 +35,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -49,7 +49,6 @@ import okhttp3.OkHttpClient;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -298,5 +297,14 @@ public class NetActivity extends AppCompatActivity {
 //                        Log.d(TAG, "onNext: " + Thread.currentThread().getName());
 //                    }
 //                });
+    }
+
+    public void doGetImages(View view) {
+//        String imageUrl = "http://127.0.0.1:8080/file/image/1.jpg";
+        String imageUrl = "http://192.168.1.4:8080/file/image/1.jpg";
+        Glide.with(this)
+                .load(imageUrl)
+                .error(R.mipmap.ic_launcher)
+                .into(iv);
     }
 }
