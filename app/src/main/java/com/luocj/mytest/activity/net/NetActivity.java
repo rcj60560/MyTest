@@ -55,7 +55,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class NetActivity extends AppCompatActivity {
     private static final String TAG = NetActivity.class.getSimpleName();
     private static final int CODE = 0x01;
-    public static final String API_URL = "https://wanandroid.com";
+//    public static final String API_URL = "https://wanandroid.com";
+    public static final String API_URL = "http://123.56.232.18:8080/serverdemo/";
 
     String apkurl = "http://60.28.125.129/f1.market.xiaomi.com/download/AppStore/0ff41344f280f40c83a1bbf7f14279fb6542ebd2a/com.sina.weibo.apk";
     private ImageView iv;
@@ -301,10 +302,50 @@ public class NetActivity extends AppCompatActivity {
 
     public void doGetImages(View view) {
 //        String imageUrl = "http://127.0.0.1:8080/file/image/1.jpg";
-        String imageUrl = "http://192.168.1.4:8080/file/image/1.jpg";
-        Glide.with(this)
-                .load(imageUrl)
-                .error(R.mipmap.ic_launcher)
-                .into(iv);
+//        String imageUrl = "http://192.168.1.4:8080/file/image/1.jpg";
+//        Glide.with(this)
+//                .load(imageUrl)
+//                .error(R.mipmap.ic_launcher)
+//                .into(iv);
+
+        OkHttpClient okHttpClient = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
+            @Override
+            public Response intercept(Chain chain) throws IOException {
+                okhttp3.Request request = chain.request();
+                Log.d(TAG, "intercept: " + request.toString());
+                //打印服务端响应数据
+                Response response = chain.proceed(request);
+                String content = response.body().string();
+                MediaType mediaType = response.body().contentType();
+                Log.d(TAG, "intercept: response" + content);
+                Log.d(TAG, "intercept: mediaType" + mediaType.toString());
+                return response
+                        .newBuilder()
+                        .body(ResponseBody.create(mediaType, content))
+                        .build();
+            }
+        }).build();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(API_URL)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(okHttpClient)
+                .build();
+
+        API api = retrofit.create(API.class);
+
+        api.getSave().enqueue(new retrofit2.Callback<Object>() {
+            @Override
+            public void onResponse(retrofit2.Call<Object> call, retrofit2.Response<Object> response) {
+                Log.i(TAG, "onResponse: ");
+            }
+
+            @Override
+            public void onFailure(retrofit2.Call<Object> call, Throwable t) {
+                Log.i(TAG, "onFailure: ");
+            }
+        });
+        
     }
 }

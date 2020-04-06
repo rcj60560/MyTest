@@ -18,4 +18,7 @@ public interface API {
     @GET("/wxarticle/chapters/json")
     Observable<ArticleModel> getWXarticleOb();
 
+    @GET("/user/insert")
+    Call<Object> getSave();
+
 }
