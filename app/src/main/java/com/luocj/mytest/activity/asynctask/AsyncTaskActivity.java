@@ -71,6 +71,7 @@ public class AsyncTaskActivity extends AppCompatActivity {
 
                         Message obtain = Message.obtain();
                         obtain.obj = "----------------.";
+                        //
                         Handler handler = new Handler(Looper.getMainLooper()){
                             @Override
                             public void handleMessage(Message msg) {
