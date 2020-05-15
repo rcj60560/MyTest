@@ -1,7 +1,9 @@
 package com.luocj.mytest;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.PersistableBundle;
 import android.util.Log;
 import android.view.View;
 
@@ -86,5 +88,23 @@ public class MainActivity extends AppCompatActivity {
     //进程保活
     public void doSaveApp(View view) {
         ActivityUtils.startActivity(SaveAppActivity.class);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        Log.i(TAG, "onSaveInstanceState: ");
+        super.onSaveInstanceState(outState, outPersistentState);
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState, PersistableBundle persistentState) {
+        Log.i(TAG, "onRestoreInstanceState: ");
+        super.onRestoreInstanceState(savedInstanceState, persistentState);
+    }
+
+    @Override
+    protected void onRestart() {
+        Log.i(TAG, "onRestart: ");
+        super.onRestart();
     }
 }

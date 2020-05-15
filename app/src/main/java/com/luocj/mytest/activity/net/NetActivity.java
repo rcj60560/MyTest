@@ -29,6 +29,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -55,7 +56,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class NetActivity extends AppCompatActivity {
     private static final String TAG = NetActivity.class.getSimpleName();
     private static final int CODE = 0x01;
-//    public static final String API_URL = "https://wanandroid.com";
+    //    public static final String API_URL = "https://wanandroid.com";
     public static final String API_URL = "http://123.56.232.18:8080/serverdemo/";
 
     String apkurl = "http://60.28.125.129/f1.market.xiaomi.com/download/AppStore/0ff41344f280f40c83a1bbf7f14279fb6542ebd2a/com.sina.weibo.apk";
@@ -346,6 +347,31 @@ public class NetActivity extends AppCompatActivity {
                 Log.i(TAG, "onFailure: ");
             }
         });
-        
+
+    }
+
+    public void doRxjava(View view) {
+        Observable.interval(3, 3, TimeUnit.SECONDS)
+                .subscribe(new Observer<Long>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        Log.i(TAG, "onSubscribe: ");
+                    }
+
+                    @Override
+                    public void onNext(Long aLong) {
+                        Log.i(TAG, "onNext: ");
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.i(TAG, "onError: ");
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        Log.i(TAG, "onComplete: ");
+                    }
+                });
     }
 }
