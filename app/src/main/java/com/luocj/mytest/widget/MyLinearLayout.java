@@ -21,17 +21,19 @@ public class MyLinearLayout extends LinearLayout {
         super(context, attrs, defStyleAttr);
     }
 
-    @Override
-    public boolean onInterceptTouchEvent(MotionEvent ev) {
-        Log.i(TAG, "onInterceptTouchEvent: ");
-        return super.onInterceptTouchEvent(ev);
-    }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         Log.i(TAG, "dispatchTouchEvent: ");
         return super.dispatchTouchEvent(ev);
     }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        Log.i(TAG, "onInterceptTouchEvent: ");
+        return true;
+    }
+
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {

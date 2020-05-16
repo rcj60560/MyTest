@@ -57,6 +57,7 @@
         <activity android:name=".activity.bitmap.XingNengYouHuaActivity" />
         <activity android:name=".activity.bitmap.TestActivity" />
         <activity android:name=".activity.saveapp.SaveAppActivity" />
+        <activity android:name=".activity.customview.FFActivity2" />
 
         <service android:name=".activity.service.SimpleService" />
         <service android:name=".activity.service.BindService" />

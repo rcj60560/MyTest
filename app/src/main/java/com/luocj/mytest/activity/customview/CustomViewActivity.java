@@ -35,4 +35,8 @@ public class CustomViewActivity extends AppCompatActivity {
     public void doAddView(View view) {
         ActivityUtils.startActivity(AddviewActivity.class);
     }
+
+    public void do2(View view) {
+        ActivityUtils.startActivity(FFActivity2.class);
+    }
 }

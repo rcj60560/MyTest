@@ -16,6 +16,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.demo.updatelib.update.UpdateService;
 import com.luocj.mytest.R;
 import com.luocj.mytest.model.ArticleModel;
+import com.luocj.mytest.model.TestModel;
 import com.luocj.mytest.utils.NotificationHelper;
 import com.luocj.mytest.widget.MyAsyncTask;
 import com.luocj.net.Net;
@@ -56,8 +57,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class NetActivity extends AppCompatActivity {
     private static final String TAG = NetActivity.class.getSimpleName();
     private static final int CODE = 0x01;
-    //    public static final String API_URL = "https://wanandroid.com";
-    public static final String API_URL = "http://123.56.232.18:8080/serverdemo/";
+    public static final String API_URL = "https://wanandroid.com";
+//    public static final String API_URL = "http://123.56.232.18:8080/serverdemo/";
 
     String apkurl = "http://60.28.125.129/f1.market.xiaomi.com/download/AppStore/0ff41344f280f40c83a1bbf7f14279fb6542ebd2a/com.sina.weibo.apk";
     private ImageView iv;
@@ -243,6 +244,23 @@ public class NetActivity extends AppCompatActivity {
 
         API api = retrofit.create(API.class);
 
+        //测试path
+
+        retrofit2.Call<TestModel> dataList = api.getDataList("2");
+
+        dataList.enqueue(new retrofit2.Callback<TestModel>() {
+            @Override
+            public void onResponse(retrofit2.Call<TestModel> call, retrofit2.Response<TestModel> response) {
+                Log.i(TAG, "onResponse: ");
+            }
+
+            @Override
+            public void onFailure(retrofit2.Call<TestModel> call, Throwable t) {
+                Log.i(TAG, "onFailure: ");
+            }
+        });
+
+
 //        retrofit2.Call<ArticleModel> call = api.getWXarticle();
 //        call.enqueue(new retrofit2.Callback<ArticleModel>() {
 //            @Override
@@ -256,30 +274,31 @@ public class NetActivity extends AppCompatActivity {
 //            }
 //        });
 
-        Observable<ArticleModel> observable = api.getWXarticleOb();
-        observable.subscribeOn(Schedulers.io())
-                .subscribeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<ArticleModel>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        Log.d(TAG, "onSubscribe: " + Thread.currentThread().getName());
-                    }
 
-                    @Override
-                    public void onNext(ArticleModel articleModel) {
-                        Log.d(TAG, "onNext: " + Thread.currentThread().getName());
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.d(TAG, "onError: " + Thread.currentThread().getName());
-                    }
-
-                    @Override
-                    public void onComplete() {
-                        Log.d(TAG, "onComplete: " + Thread.currentThread().getName());
-                    }
-                });
+//        Observable<ArticleModel> observable = api.getWXarticleOb();
+//        observable.subscribeOn(Schedulers.io())
+//                .subscribeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Observer<ArticleModel>() {
+//                    @Override
+//                    public void onSubscribe(Disposable d) {
+//                        Log.d(TAG, "onSubscribe: " + Thread.currentThread().getName());
+//                    }
+//
+//                    @Override
+//                    public void onNext(ArticleModel articleModel) {
+//                        Log.d(TAG, "onNext: " + Thread.currentThread().getName());
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        Log.d(TAG, "onError: " + Thread.currentThread().getName());
+//                    }
+//
+//                    @Override
+//                    public void onComplete() {
+//                        Log.d(TAG, "onComplete: " + Thread.currentThread().getName());
+//                    }
+//                });
 
 //        Observable<ArticleModel> observable = api.getWXarticleOb();
 //        observable.subscribeOn(Schedulers.io())
