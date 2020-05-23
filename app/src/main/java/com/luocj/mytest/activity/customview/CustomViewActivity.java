@@ -39,4 +39,8 @@ public class CustomViewActivity extends AppCompatActivity {
     public void do2(View view) {
         ActivityUtils.startActivity(FFActivity2.class);
     }
+
+    public void circleview(View view) {
+        ActivityUtils.startActivity(CircleviewActivity.class);
+    }
 }

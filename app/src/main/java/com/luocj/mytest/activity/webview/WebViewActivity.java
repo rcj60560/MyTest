@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.JsResult;
+import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -83,7 +84,7 @@ public class WebViewActivity extends AppCompatActivity {
                 b.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                       result.cancel();
+                        result.cancel();
                     }
                 });
                 b.setCancelable(false);
@@ -93,13 +94,24 @@ public class WebViewActivity extends AppCompatActivity {
 
         });
 
-        webview.setWebViewClient(new WebViewClient(){
+        webview.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
                 Log.i(TAG, "onPageFinished: ");
             }
         });
+
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//            webview.evaluateJavascript("new String()", new ValueCallback<String>() {
+//                @Override
+//                public void onReceiveValue(String value) {
+//
+//                }
+//            });
+//        } else {
+//            webview.loadUrl("---------->");
+//        }
 
     }
 

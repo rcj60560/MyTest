@@ -7,10 +7,12 @@ import android.util.LruCache;
 
 import org.junit.Test;
 
+import java.nio.channels.ReadableByteChannel;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 import static org.junit.Assert.*;
 
@@ -64,14 +66,7 @@ public class ExampleUnitTest {
 //        }
 //
 //        Handler handler = new Handler();
-
-        int a  = 100;
-        int b = 200;
-
-        change(a,b);
-
-        System.out.println("a:" + a);
-        System.out.println("b:" + b);
+        System.out.println("----");
     }
 
     public void change(Object t1, Object t2) {

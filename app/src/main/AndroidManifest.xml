@@ -58,6 +58,7 @@
         <activity android:name=".activity.bitmap.TestActivity" />
         <activity android:name=".activity.saveapp.SaveAppActivity" />
         <activity android:name=".activity.customview.FFActivity2" />
+        <activity android:name=".activity.customview.CircleviewActivity" />
 
         <service android:name=".activity.service.SimpleService" />
         <service android:name=".activity.service.BindService" />

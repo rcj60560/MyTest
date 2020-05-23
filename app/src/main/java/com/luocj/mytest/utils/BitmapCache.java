@@ -3,6 +3,7 @@ package com.luocj.mytest.utils;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.util.ArrayMap;
+import android.util.LruCache;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -41,7 +42,13 @@ public class BitmapCache {
     private class MySoftRef extends SoftReference<Bitmap> {
         public MySoftRef(Bitmap referent, ReferenceQueue<? super Bitmap> q) {
             super(referent, q);
-
+            int maxMemory = (int) (Runtime.getRuntime().totalMemory() / 8);
+            LruCache<String, Bitmap> cache = new LruCache<String, Bitmap>(maxMemory) {
+                @Override
+                protected int sizeOf(String key, Bitmap value) {
+                    return value.getRowBytes() * value.getHeight() / 1024;
+                }
+            };
         }
     }
 

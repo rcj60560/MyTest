@@ -14,6 +14,9 @@ import com.luocj.mytest.widget.MyAsyncTask;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.concurrent.Executor;
+import java.util.concurrent.ThreadFactory;
+
 public class AsyncTaskActivity extends AppCompatActivity {
 
     private static final String TAG = AsyncTaskActivity.class.getSimpleName();
@@ -87,6 +90,8 @@ public class AsyncTaskActivity extends AppCompatActivity {
     }
 
     public void asynctask(View view) {
+
+
         new Thread(new Runnable() {
             @Override
             public void run() {
