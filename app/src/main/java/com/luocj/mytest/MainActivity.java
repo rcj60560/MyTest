@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 })
                 .start();
+
     }
 
     public void doRecyclerview(View view) {
@@ -104,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onRestart() {
-        Log.i(TAG, "onRestart: ");
         super.onRestart();
+        Log.i(TAG, "onRestart: ");
     }
 }
