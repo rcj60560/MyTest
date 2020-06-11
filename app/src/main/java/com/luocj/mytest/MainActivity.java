@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
 
     //test
     //mac commit
+
+    //我是master 分支的
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
