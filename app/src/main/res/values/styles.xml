@@ -11,4 +11,9 @@
     <style name="progress_h" parent="Widget.AppCompat.ProgressBar.Horizontal">
     </style>
 
+
+    <declare-styleable name="PullLoadMoreView">
+        <attr name="top_background_color" format="color" />
+    </declare-styleable>
+
 </resources>
