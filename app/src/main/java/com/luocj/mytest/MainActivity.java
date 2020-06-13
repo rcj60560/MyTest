@@ -11,6 +11,7 @@ import com.blankj.utilcode.util.ActivityUtils;
 import com.luocj.mytest.activity.asynctask.AsyncTaskActivity;
 import com.luocj.mytest.activity.bitmap.YouHuaActivity;
 import com.luocj.mytest.activity.customview.CustomViewActivity;
+import com.luocj.mytest.activity.douya.DouyaActivity;
 import com.luocj.mytest.activity.net.NetActivity;
 import com.luocj.mytest.activity.other.LazyLoadActivity;
 import com.luocj.mytest.activity.project.ProjectActivity;
@@ -84,6 +85,11 @@ public class MainActivity extends AppCompatActivity {
     public void asynctaskActivity(View view) {
         ActivityUtils.startActivity(AsyncTaskActivity.class);
     }
+
+    public void doDouya(View view) {
+        ActivityUtils.startActivity(DouyaActivity.class);
+    }
+
 
     //进程保活
     public void doSaveApp(View view) {

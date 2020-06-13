@@ -59,6 +59,8 @@
         <activity android:name=".activity.saveapp.SaveAppActivity" />
         <activity android:name=".activity.customview.FFActivity2" />
         <activity android:name=".activity.customview.CircleviewActivity" />
+        <activity android:name=".activity.douya.DouyaActivity" />
+        <activity android:name=".activity.douya.Page1Activity" />
 
         <service android:name=".activity.service.SimpleService" />
         <service android:name=".activity.service.BindService" />

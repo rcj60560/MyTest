@@ -132,11 +132,12 @@
                     android:textAllCaps="false" />
 
                 <Button
+                    android:onClick="doDouya"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:text=""
+                    android:text="sunning douya"
                     android:textAllCaps="false" />
 
             </LinearLayout>
