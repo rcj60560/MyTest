@@ -61,6 +61,7 @@
         <activity android:name=".activity.customview.CircleviewActivity" />
         <activity android:name=".activity.douya.DouyaActivity" />
         <activity android:name=".activity.douya.Page1Activity" />
+        <activity android:name=".activity.recyclerview.XiFuActivity" />
 
         <service android:name=".activity.service.SimpleService" />
         <service android:name=".activity.service.BindService" />

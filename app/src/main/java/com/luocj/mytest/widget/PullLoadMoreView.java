@@ -73,7 +73,6 @@ public class PullLoadMoreView extends LinearLayout {
         buildView();
         return headLayout;
     }
-
     /**
      * 构建整个view布局
      */

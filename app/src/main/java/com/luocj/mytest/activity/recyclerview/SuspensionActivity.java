@@ -22,8 +22,8 @@ import androidx.recyclerview.widget.RecyclerView;
 public class SuspensionActivity extends AppCompatActivity {
 
     private LinearLayout llsuspensior;
-    private ImageView iv1;
-    private TextView content;
+//    private ImageView iv1;
+//    private TextView content;
     private int height;
     private int currentPos;
 
@@ -37,8 +37,8 @@ public class SuspensionActivity extends AppCompatActivity {
     private void initView() {
 
         llsuspensior = findViewById(R.id.ll_suspensior);
-        iv1 = findViewById(R.id.iv1);
-        content = findViewById(R.id.content);
+//        iv1 = findViewById(R.id.iv1);
+//        content = findViewById(R.id.content);
 
         RecyclerView rv = findViewById(R.id.rv);
         final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);

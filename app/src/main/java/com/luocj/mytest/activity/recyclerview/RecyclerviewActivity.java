@@ -40,6 +40,10 @@ public class RecyclerviewActivity extends AppCompatActivity implements View.OnCl
                 startActivity(new Intent(this, SuspensionActivity.class));
                 break;
 
+            case R.id.btn4:
+                startActivity( new Intent(this,XiFuActivity.class));
+                break;
+
         }
     }
 }
