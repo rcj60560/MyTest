@@ -50,7 +50,7 @@ public class XiFuActivity extends AppCompatActivity {
                 LinearLayout topbar = child1.findViewById(R.id.topbar);
 
                 float rate = px2dip(XiFuActivity.this, scrollY1) * 100.f / px2dip(XiFuActivity.this, child1.getHeight());
-                topbar.setAlpha(1-rate);
+                topbar.setAlpha(1 - rate);
                 Log.i(TAG, "onScrollChange: " + px2dip(XiFuActivity.this, scrollY1)
                         + ", bottom :" + bottom
                         + ", top :" + top + ",top-----> :" + px2dip(XiFuActivity.this, child1.getHeight()) + ",rate :" + rate);
